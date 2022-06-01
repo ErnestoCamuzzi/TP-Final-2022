@@ -6,6 +6,7 @@
 #define DIM 100
 #define DIM_CONSUMOS 10
 #define ESC 27
+#define ARCHI_CLIENTES "clientes.dat"
 
 typedef struct
 {
@@ -33,129 +34,118 @@ typedef struct
     int baja; /// 0 si está activo - 1 si está eliminado
 } stConsumos;
 
-int cargaClientes(stCliente c[],int dim);
-void muestraClientes (stCliente c[], int v);
+stCliente cargaUnCliente();
+
+void muestraUnCliente (stCliente c);
 int cargaConsumos(stConsumos c[],int dim);
 void muestraConsumos (stConsumos c[], int v);
+void cargaArchivoClientes(char nombreArchivo[]);
+void muestraArchivoClientes(char nombre_Archivo[]);
 
 int main()
 {
     stCliente clientes[DIM];
-    stConsumos consumos[DIM_CONSUMOS];
-
     int validos=0;
-    int vConsumos=0;
+    cargaArchivoClientes(ARCHI_CLIENTES);
+    printf("\nPRUEBA");
+    muestraArchivoClientes(ARCHI_CLIENTES);
 
-    validos= cargaClientes(clientes, DIM);
-    system("cls");
-    muestraClientes(clientes, validos);
 
-    vConsumos=cargaConsumos(consumos,DIM_CONSUMOS);
-    muestraConsumos (consumos, vConsumos);
+    ///stConsumos consumos[DIM_CONSUMOS];
+    /// int vConsumos=0;
+
+
+
+    ///validos= cargaClientes(clientes, DIM);
+    ///system("cls");
+    ///muestraClientes(clientes, validos);
+
+    /// vConsumos=cargaConsumos(consumos,DIM_CONSUMOS);
+    /// muestraConsumos (consumos, vConsumos);
 
     return 0;
 }
 
-int cargaClientes(stCliente c[],int dim)
+stCliente cargaUnCliente()
+
 {
+    stCliente c;
+    static int i=0;
+    i++;
+    c.id=i;
+    c.nroCliente=i+1000;
 
-    char opcion=0;
-    int i=0;
+    fflush(stdin);
+    printf("Nombre..........: ");
+    gets(c.nombre);
 
-    while(opcion != ESC && i<dim)
-    {
+    fflush(stdin);
+    printf("Apellido........: ");
+    gets(c.apellido);
 
-        c[i].id = i+1;
-        system("cls");
+    fflush(stdin);
+    printf("DNI.............: ");
+    gets(c.dni);
 
-        fflush(stdin);
-        printf("Nombre..........: ");
-        gets(c[i].nombre);
+    printf("E-Mail..........: ");
+    gets(c.email);
 
-        fflush(stdin);
-        printf("Apellido........: ");
-        gets(c[i].apellido);
+    fflush(stdin);
+    printf("Domicilio.......: ");
+    gets(c.domicilio);
 
-        fflush(stdin);
-        printf("DNI.............: ");
-        gets(c[i].dni);
+    fflush(stdin);
+    printf("Telefono movil..: ");
+    gets(c.movil);
 
-        printf("E-Mail..........: ");
-        gets(c[i].email);
+    c.eliminado = 0; /// si está en cero está activo por defecto.
+    ///  Para eliminar se le asigna valor 1 desde el menu
 
-        fflush(stdin);
-        printf("Domicilio.......: ");
-        gets(c[i].domicilio);
-
-        fflush(stdin);
-        printf("Telefono movil..: ");
-        gets(c[i].movil);
-
-        c[i].eliminado = 0;
-        i++;
-        printf("DESEA CARGAR OTRO USUARIO? ESC PARA CANCELAR CUALQUIER OTRA COSA PARA SEGUIR.\n\n");
-        opcion=getch();
-    }
-    return i;
+    return c;
 }
 
-void muestraClientes (stCliente c[], int v)
+void muestraUnCliente(stCliente c) /// Imprime en pantalla datos de cliente y además informa si está activo o no
 {
-    for(int i=0; i<v; i++)
+    printf("\n ID.................: %d", c.id);
+    printf("\n N° de cliente......: %d", c.nroCliente);
+    printf("\n Apellido y Nombres.: %s, %s",c.apellido, c.nombre);
+    printf("\n DNI................: %s", c.dni);
+    printf("\n E-mail.............: %s", c.email);
+    printf("\n Domicilio..........: %s", c.domicilio);
+    printf("\n Movil..............: %s", c.movil);
+
+    if(c.eliminado == 0)
     {
-
-        printf("\n ID.................: %d", c[i].id);
-        printf("\n Apellido y Nombres.: %s, %s", c[i].apellido, c[i].nombre);
-        printf("\n DNI................: %s", c[i].dni);
-        printf("\n E-mail.............: %s", c[i].email);
-        printf("\n Domicilio..........: %s", c[i].domicilio);
-        printf("\n Movil..............: %s", c[i].movil);
-        if(c[i].eliminado == 0)
-        {
-            printf("\n\nCLIENTE ACTIVO.\n\n");
-        }
-        else
-        {
-            printf("\n\nCLIENTE INACTIVO.\n\n");
-
-        }
-        printf("\n===================================================");
+        printf("\n\nCLIENTE ACTIVO.\n\n");
     }
+    else
+    {
+        printf("\n\nCLIENTE INACTIVO.\n\n");
+    }
+    printf("\n===================================================");
+
 }
-
-int cargaConsumos(stConsumos c[],int dim)
+/// Función de PRUEBA.
+/*stConsumos cargaUnConsumo() /// Imputar un cosumo diario consumos a un cliente.
 {
-
-    int i=0;
-
+    stConsumos consu;
     do
     {
-        c[i].id = rand()%1000;
-
-        c[i].idCliente=rand()%50+1;
-
-        c[i].anio=rand()%(2022-2000)+2000;
-
-        c[i].mes=rand()%12+1;
-
-        c[i].dia=rand()%31+1;
-
-        c[i].datosConsumidos=rand()%100+1;
-
-        c[i].baja = 0;
-
-        i++;
-
+        c.id = rand()%1000;
+        c.idCliente=rand()%50+1;
+        c.anio=rand()%(2022-2000)+2000;
+        c.mes=rand()%12+1;
+        c.dia=rand()%31+1;
+        c.datosConsumidos=rand()%100+1;
+        c.baja = 0;
     }
-    while(i<dim);
-    return i;
-}
+    return consu;
+}*/
 
 void muestraConsumos (stConsumos c[], int v)
 {
     for(int i=0; i<v; i++)
     {
-
         printf("\n ID.................: %d", c[i].id);
         printf("\n ID Cliente.........: %d", c[i].idCliente);
         printf("\n Anio...............: %d", c[i].anio);
@@ -173,3 +163,61 @@ void muestraConsumos (stConsumos c[], int v)
         printf("\n===================================================");
     }
 }
+
+void cargaArchivoClientes(char nombreArchivo[])
+{
+    FILE *archi=fopen(nombreArchivo,"ab");
+    stCliente clientes;
+    char option=0;
+    if (archi)
+        do
+        {
+            system("cls");
+            clientes=cargaUnCliente();
+            fwrite(&clientes,sizeof(stCliente),1,archi);
+            printf("Si desea salir presione ESC\n");
+            option=getch();
+        }
+        while(option!=27);
+    fclose(archi);
+}
+
+void muestraArchivoClientes(char nombre_Archivo[])
+{
+    FILE *archi=fopen(nombre_Archivo,"rb");
+    stCliente c;
+
+    if (archi)
+    {
+        while(fread(&c,sizeof(stCliente),1,archi)>0)
+        {
+            muestraUnCliente(c);
+        }
+        fclose(archi);
+    }
+
+
+}
+
+/*void cargaArchivoConsumos(char nombreArchivo[])
+{
+    FILE *archi=fopen(nombreArchivo,"ab");
+    stConsumos consu;
+    char option=0;
+    if (archi)
+        do
+        {
+            consumos=cargaConsumos();
+            fwrite(&consumos,sizeof(stConsumos),1,archi);
+            printf("Si desea salir presione ESC\n");
+            option=getch();
+        }
+        while(option!=27);
+    fclose(archi);
+
+
+}
+*/
+
+
+
