@@ -20,4 +20,5 @@ typedef struct
 
 stConsumos cargaUnConsumo();
 void muestraConsumos (stConsumos c[], int v);
+
 #endif // CONSUMO_H_INCLUDED

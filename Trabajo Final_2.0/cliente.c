@@ -8,14 +8,14 @@
 
 
 
-stCliente cargaUnCliente(){
+stCliente cargaUnCliente()
+{
 
     stCliente c;
 
-
-    printf("N° Cliente.......:");
-    scanf("%d", &c.nroCliente);
-
+    printf("\n==========================\n");
+    printf("\nCARGA CLIENTE\n");
+    printf("\n==========================\n\n\n");
     fflush(stdin);
     printf("Nombre..........: ");
     gets(c.nombre);
@@ -27,7 +27,7 @@ stCliente cargaUnCliente(){
     fflush(stdin);
     printf("DNI.............: ");
     gets(c.dni);
-
+    /////////
     printf("E-Mail..........: ");
     gets(c.email);
 
@@ -49,7 +49,7 @@ stCliente cargaUnCliente(){
 void muestraUnCliente(stCliente c) /// Imprime en pantalla datos de cliente y además informa si está activo o no
 {
     printf("\n ID.................: %d", c.id);
-    printf("\n N° de cliente......: %d", c.nroCliente);
+    printf("\n N* de cliente......: %d", c.nroCliente);
     printf("\n Apellido y Nombres.: %s, %s",c.apellido, c.nombre);
     printf("\n DNI................: %s", c.dni);
     printf("\n E-mail.............: %s", c.email);
@@ -68,11 +68,13 @@ void muestraUnCliente(stCliente c) /// Imprime en pantalla datos de cliente y ad
 
 }
 
-int cargaArregloCliente(stCliente e[], int dim){
+int cargaArregloCliente(stCliente e[], int dim)
+{
     char opcion = 0;
     int i = 0;
 
-    while(i<dim && opcion != ESC){
+    while(i<dim && opcion != ESC)
+    {
         system("cls");
         e[i] = cargaUnCliente();
         i++;

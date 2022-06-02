@@ -38,3 +38,42 @@
 	<conio.h>
 	<time.h>
 
+1654139100 source:c:\users\dario\desktop\tp\trabajo final_2.0\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654136711 c:\users\dario\desktop\tp\trabajo final_2.0\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654125466 source:c:\users\dario\desktop\tp\trabajo final_2.0\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654136713 c:\users\dario\desktop\tp\trabajo final_2.0\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654139091 source:c:\users\dario\desktop\tp\trabajo final_2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+
+1654136219 c:\users\dario\desktop\tp\trabajo final_2.0\archivo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+

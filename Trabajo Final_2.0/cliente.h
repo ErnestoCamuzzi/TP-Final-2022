@@ -25,4 +25,5 @@ typedef struct
 stCliente cargaUnCliente ();
 void muestraUnCliente(stCliente c);
 int cargaArregloCliente(stCliente e[], int dim);
+
 #endif // CLIENTE_H_INCLUDED
