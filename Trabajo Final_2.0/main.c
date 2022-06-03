@@ -5,6 +5,8 @@
 #include "cliente.h"
 #include "consumo.h"
 #include <string.h>
+#include "gotoxy.h"
+
 
 
 #define DIM 100
@@ -24,10 +26,60 @@ void muestraArchivoClientes(char nombre_Archivo[]);
 
 int main()
 {
+
+    char opcion;
+     do
+    {
+        system("cls");
+        muestraMenu();
+        opcion=getch();
+        system("cls");
+
+        switch(opcion)
+        {
+        case 48:
+       cargaArchivoClientes(ARCHI_CLIENTES);
+              break;
+
+        case 49:
+
+            break;
+
+        case 50:
+
+            break;
+
+        case 51:
+
+            break;
+
+        case 52:
+
+
+            break;
+
+        case 53:
+
+            break;
+
+        case 54:
+
+            break;
+
+        case 55:
+            break;
+
+        case 57:
+            break;
+
+        }
+
+    }
+    while (opcion!=27);
     stCliente clientes[DIM];
     int validos=0;
 
-    ///cargaArchivoClientes(ARCHI_CLIENTES);
+    ///
     muestraArchivoClientes(ARCHI_CLIENTES);
 
 
@@ -132,3 +184,37 @@ void getNombre(char n[])
     char nombres[][20]= {"Pedro", "Pablo", "Ana"};
     strcpy(n, nombres[rand()%(sizeof(nombres)/20)]);
 }
+
+void muestraMenu()
+{
+    printf("\n");
+    color(10);
+    replicaChar('=',100);
+    printf("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU CLIENTES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
+    color(3);
+    printf("\n 0 - Carga de un cliente");
+    printf("\n 1 - Modificacion de un cliente");
+    printf("\n 2 - Borrar un cliente ");
+    printf("\n 3 - Buscar un cliente");
+    printf("\n 4 - Carga de un consumo");
+    printf("\n 5 - Modificacion de un consumo ");
+    printf("\n 6 - Borrar un consumo");
+    printf("\n 7 - Buscar un consumo");
+    printf("\n 8 -  ");
+    printf("\n 9 - \n ");
+    color(10);
+    replicaChar('=',100);
+
+
+}
+
+void replicaChar(char c, int cant)
+{
+    for(int i=0; i<cant; i++)
+    {
+        printf("%c",c);
+    }
+}
+
+
+

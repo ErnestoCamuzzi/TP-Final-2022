@@ -12,6 +12,7 @@ stCliente cargaUnCliente()
 {
 
     stCliente c;
+    int dni;
 
     printf("\n==========================\n");
     printf("\nCARGA CLIENTE\n");
@@ -25,9 +26,9 @@ stCliente cargaUnCliente()
     gets(c.apellido);
 
     fflush(stdin);
-    printf("DNI.............: ");
+    printf("Dni.............: ");
     gets(c.dni);
-    /////////
+
     printf("E-Mail..........: ");
     gets(c.email);
 
@@ -76,6 +77,7 @@ int cargaArregloCliente(stCliente e[], int dim)
     while(i<dim && opcion != ESC)
     {
         system("cls");
+
         e[i] = cargaUnCliente();
         i++;
 
@@ -85,3 +87,22 @@ int cargaArregloCliente(stCliente e[], int dim)
 
     return i;
 }
+
+
+//
+/////int validaDni(char dni[], int val,)
+//{
+//
+//    int flag=0;
+//
+//
+//    for(int i=0;i<val; i++)
+//    {
+//        if(strcmp( dni, e[i].dni)==0)
+//        {
+//            flag=1;
+//
+//        }
+//    }
+//    return flag;
+//}
