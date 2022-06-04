@@ -25,7 +25,5 @@ typedef struct
 stCliente cargaUnCliente ();
 void muestraUnCliente(stCliente c);
 int cargaArregloCliente(stCliente e[], int dim);
-int validaDni(char dni[], int val);
-void muestraMenu();
 
 #endif // CLIENTE_H_INCLUDED

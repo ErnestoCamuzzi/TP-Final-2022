@@ -39,10 +39,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="consumo.h" />
-		<Unit filename="gotoxy.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="gotoxy.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
