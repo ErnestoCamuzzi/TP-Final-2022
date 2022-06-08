@@ -10,9 +10,10 @@
 
 
 #define DIM 100
-#define DIM_CONSUMOS 10
+#define DIM_CONSUMOS 50
 #define ESC 27
 #define ARCHI_CLIENTES "clientes.dat"
+#define ARCHI_CONSUMOS "consumos.dat"
 
 
 
@@ -34,12 +35,19 @@ void modificarDNICliente(char nombreArchivo[], int nrCliente);
 void modificarEmailCliente(char nombreArchivo[], int nrCliente);
 void modificarDomicilioCliente(char nombreArchivo[], int nrCliente);
 void modificarTelefonoCliente(char nombreArchivo[], int nrCliente);
+void cargaArchivoConsumos(char nombreArchivo[]);
+void muestraArchivoConsumo(char nombreArchivo[]);
 
 int main()
 {
 
     char archivoCliente[]= {"clientes.dat"};
+    char archivoConsumo[]= {"consumos.dat"};
     int nrCliente;
+    stConsumos consumos[DIM_CONSUMOS];
+    int vConsumo =0;
+
+    cargaArchivoConsumos(ARCHI_CONSUMOS);
 
     char opcion;
     do
@@ -92,9 +100,14 @@ int main()
             break;
 
         case 55:
+            vConsumo = cargaArregloConsumo(consumos, DIM_CONSUMOS);
+            muestraConsumos(consumos, vConsumo);
+            system("pause");
             break;
 
         case 57:
+            muestraArchivoConsumo(ARCHI_CONSUMOS);
+            system("pause");
             break;
 
         }
@@ -103,23 +116,6 @@ int main()
     while (opcion!=27);
     stCliente clientes[DIM];
     int validos=0;
-
-    ///
-
-
-    ///stConsumos consumos[DIM_CONSUMOS];
-    /// int vConsumos=0;
-
-    ///validos=cargaArregloCliente(clientes, DIM);
-
-    ///system("cls");
-    ///muestraClientes(clientes, validos);
-
-    /// vConsumos=cargaConsumos(consumos,DIM_CONSUMOS);
-    /// muestraConsumos (consumos, vConsumos);
-
-
-
 
     return 0;
 }
@@ -174,24 +170,38 @@ void muestraArchivoClientes(char nombreArchivo[])
     }
 }
 
-///void cargaArchivoConsumos(char nombreArchivo[])
-/*{
+void cargaArchivoConsumos(char nombreArchivo[])
+{
     FILE *archi=fopen(nombreArchivo,"ab");
-    stConsumos consu;
-    char option=0;
+    stConsumos consumos;
+    ///char option=0;
     if (archi)
-        do
-        {
-            consumos=cargaConsumos();
-            fwrite(&consumos,sizeof(stConsumos),1,archi);
-            printf("Si desea salir presione ESC\n");
-            option=getch();
-        }
-        while(option!=27);
+       /// do
+        ///{
+            for(int i=0;i<1001;i++){consumos=cargaUnConsumo();
+            fwrite(&consumos,sizeof(stConsumos),1,archi);}
+            ///printf("Si desea salir presione ESC\n");
+           /// option=getch();
+       /// }
+       /// while(option!=27);
     fclose(archi);
+}
 
 
-}*/
+void muestraArchivoConsumo(char nombreArchivo[])
+{
+    FILE *archi=fopen(nombreArchivo,"rb");
+    stConsumos c;
+
+    if (archi)
+    {
+        while(fread(&c,sizeof(stConsumos),1,archi)>0)
+        {
+            muestraUnConsumo(c);
+        }
+        fclose(archi);
+    }
+}
 
 
 int ultimoIdCliente(char nombreArchivo[])

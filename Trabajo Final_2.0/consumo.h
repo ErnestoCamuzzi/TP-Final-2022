@@ -6,6 +6,7 @@
 #ifndef CONSUMO_H_INCLUDED
 #define CONSUMO_H_INCLUDED
 
+
 typedef struct
 {
     int id; /// campo único y autoincremental
