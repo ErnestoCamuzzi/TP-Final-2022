@@ -130,13 +130,13 @@
 	<conio.h>
 	<time.h>
 
-1654650313 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.c
+1654908858 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.c
 	"consumo.h"
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 
-1654649265 c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.h
+1654727479 c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.h
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -147,7 +147,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1654650282 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\main.c
+1654909073 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>

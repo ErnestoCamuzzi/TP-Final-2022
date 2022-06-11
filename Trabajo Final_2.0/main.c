@@ -10,7 +10,7 @@
 
 
 #define DIM 100
-#define DIM_CONSUMOS 50
+#define DIM_CONSUMOS 10
 #define ESC 27
 #define ARCHI_CLIENTES "clientes.dat"
 #define ARCHI_CONSUMOS "consumos.dat"
@@ -35,19 +35,24 @@ void modificarDNICliente(char nombreArchivo[], int nrCliente);
 void modificarEmailCliente(char nombreArchivo[], int nrCliente);
 void modificarDomicilioCliente(char nombreArchivo[], int nrCliente);
 void modificarTelefonoCliente(char nombreArchivo[], int nrCliente);
-void cargaArchivoConsumos(char nombreArchivo[]);
+void cargaArchivoConsumosRandom(char nombreArchivo[]);
 void muestraArchivoConsumo(char nombreArchivo[]);
+int buscaIdClienteEnArchivo(int idCliente);
+void cargarArchivoConsumoManual(char nombreArchivo[]);
 
 int main()
 {
 
     char archivoCliente[]= {"clientes.dat"};
     char archivoConsumo[]= {"consumos.dat"};
-    int nrCliente;
-    stConsumos consumos[DIM_CONSUMOS];
-    int vConsumo =0;
 
-    cargaArchivoConsumos(ARCHI_CONSUMOS);
+    stCliente clientes[DIM];
+    stConsumos consumos[DIM_CONSUMOS];
+    system("pause");
+
+    int validos=0;
+    int nrCliente;
+    int vConsumo =0;
 
     char opcion;
     do
@@ -89,7 +94,7 @@ int main()
             mostrarClientesInactivos(ARCHI_CLIENTES);
             break;
 
-        case 54:
+        case 54: ///TECLA 6
             printf("INGRE NR CLIENTE: ");
             scanf("%d", &nrCliente);
             modificarNombreCliente(ARCHI_CLIENTES, nrCliente);
@@ -99,14 +104,21 @@ int main()
             modificarDomicilioCliente(ARCHI_CLIENTES, nrCliente);
             break;
 
-        case 55:
-            vConsumo = cargaArregloConsumo(consumos, DIM_CONSUMOS);
-            muestraConsumos(consumos, vConsumo);
+        case 55: ///TECLA 7
+            cargaArchivoConsumosRandom(ARCHI_CONSUMOS);
+            system("pause");
+
+            break;
+
+        case 56: ///TECLA 8
+            ///cargaUnConsumoManual();
+            cargarArchivoConsumoManual(ARCHI_CONSUMOS);
             system("pause");
             break;
 
-        case 57:
+        case 57: ///TECLA 9
             muestraArchivoConsumo(ARCHI_CONSUMOS);
+
             system("pause");
             break;
 
@@ -114,9 +126,6 @@ int main()
 
     }
     while (opcion!=27);
-    stCliente clientes[DIM];
-    int validos=0;
-
     return 0;
 }
 
@@ -170,23 +179,75 @@ void muestraArchivoClientes(char nombreArchivo[])
     }
 }
 
-void cargaArchivoConsumos(char nombreArchivo[])
+void cargaArchivoConsumosRandom(char nombreArchivo[])
 {
-    FILE *archi=fopen(nombreArchivo,"ab");
-    stConsumos consumos;
-    ///char option=0;
-    if (archi)
-       /// do
-        ///{
-            for(int i=0;i<1001;i++){consumos=cargaUnConsumo();
-            fwrite(&consumos,sizeof(stConsumos),1,archi);}
-            ///printf("Si desea salir presione ESC\n");
-           /// option=getch();
-       /// }
-       /// while(option!=27);
+    FILE *archi=fopen(nombreArchivo,"a+b");
+    stConsumos c;
+    int idConsumo=ultimoIdConsumo(nombreArchivo);
+
+    if(archi)
+        for(int i=0; i<100; i++)
+        {
+            idConsumo++;
+            c=cargaUnConsumo();
+            c.id=idConsumo;
+            fwrite(&c,sizeof(stConsumos),1,archi);
+        }
     fclose(archi);
+
 }
 
+
+void cargarArchivoConsumoManual(char nombreArchivo[])
+{
+
+    FILE *archi=fopen(nombreArchivo, "a+b");
+    stConsumos c;
+    char opcion=0;
+
+    if(archi)
+    {
+        do
+        {
+            fopen(nombreArchivo, "a+b");
+            c=cargaUnConsumoManual();
+            fwrite(&c,sizeof(stConsumos),1,archi);
+            printf("CONSUMO GUARDADO.\n");
+            printf("DESEA CARGAR OTRO CONSUMO? ESC PARA SALIR\n");
+            opcion=getch();
+            fclose(archi);
+        }
+        while(opcion!=27);
+    }
+}
+
+
+
+
+
+void cargaArchivoConsumosManual(char nombreArchivo[])
+{
+    FILE *archi=fopen(nombreArchivo,"a+b");
+    stConsumos c;
+    int idConsumo=ultimoIdConsumo(nombreArchivo);
+    char opcion=0;
+
+    if(archi)
+        do
+        {
+            idConsumo++;
+            c=cargaUnConsumo();
+            c.id=idConsumo;
+            fwrite(&c,sizeof(stConsumos),1,archi);
+
+            printf("DESEA CARGAR OTRO CONSUMO? ESC PARA SALIR.\n");
+            opcion=getch();
+
+        }
+        while(opcion!=27);
+    fclose(archi);
+
+}
 
 void muestraArchivoConsumo(char nombreArchivo[])
 {
@@ -222,6 +283,113 @@ int ultimoIdCliente(char nombreArchivo[])
     return id;
 }
 
+
+int ultimoIdConsumo(char nombreArchivo[])
+{
+    int id = 0;
+    stConsumos c;
+    FILE *arch = fopen(nombreArchivo, "rb");
+    if(arch)
+    {
+        fseek(arch, -1*sizeof(stConsumos), SEEK_END);
+        if(fread(&c, sizeof(stConsumos), 1, arch)>0)
+        {
+            id = c.id;
+        }
+        fclose(arch);
+    }
+
+    return id;
+}
+
+
+int validaMes(int mes)
+{
+
+    int flag=0;
+
+    if(mes>=1 && mes<=12)
+    {
+        flag=1;
+    }
+
+    if(flag==0)
+    {
+        printf("MES INCORRECTO\n");
+    }
+
+    return flag;
+}
+
+int validaDia(int mes, int dia)
+{
+    int flag=0;
+
+    if(mes==2)
+    {
+        if(dia>=1 && dia<=28)
+        {
+            flag=1;
+        }
+
+    }
+    else if(mes == 1 ||mes == 3||mes == 5 ||mes == 7 ||mes == 8||mes == 10||mes == 12 )
+    {
+        if(dia>=1 && dia<=31)
+        {
+            flag=1;
+        }
+    }
+    else
+    {
+        if(dia>=1 && dia<=30)
+        {
+            flag=1;
+        }
+    }
+
+    if(flag==0)
+    {
+        printf("DIA INCORRECTO\n");
+    }
+
+    return flag;
+}
+
+
+int validaAnio(int anio)
+{
+    int flag=0;
+
+    if(anio>=2000 && anio<=2022)
+    {
+        flag=1;
+    }
+
+    if(flag==0)
+    {
+        printf("ANIO INCORRECTO\n");
+    }
+
+    return flag;
+}
+
+
+int validaConsumo(int consumo)
+{
+    int flag=0;
+
+    if(consumo>0)
+    {
+        flag=1;
+    }
+    if(flag==0)
+    {
+        printf("CONUSMO INCORRECTO\n");
+    }
+    return flag;
+}
+
 void getNombre(char n[])
 {
     char nombres[][20]= {"Pedro", "Pablo", "Ana"};
@@ -242,9 +410,9 @@ void muestraMenu()
     printf("\n 4 - Muestra clientes ACTIVOS.");
     printf("\n 5 - Muestra clientes INACTIVOS.");
     printf("\n 6 - MODIFICAR NOMBRE Y APELLIDO");
-    printf("\n 7 - Buscar un consumo");
+    printf("\n 7 - CARGA 100 CONSUMOS");
     printf("\n 8 -  ");
-    printf("\n 9 - \n ");
+    printf("\n 9 - MUESTRA ARCHIVO CONSUMOS\n ");
     color(10);
     replicaChar('=',100);
 
@@ -279,10 +447,29 @@ int buscaDniEnArchivo(FILE *archi, char dni[])
         }
         fclose(archi);
     }
-
-
     return flag;
+}
 
+int buscaIdClienteEnArchivo(int idCliente)
+{
+    stConsumos c;
+    int flag =0;
+
+    FILE *archi=fopen(ARCHI_CONSUMOS,"rb");
+
+
+    if(archi)
+    {
+        while(flag ==0 && fread(&c, sizeof(stConsumos), 1, archi)>0)
+        {
+            if(c.idCliente==idCliente)
+            {
+                flag=1;
+            }
+        }
+        fclose(archi);
+    }
+    return flag;
 }
 
 
@@ -361,7 +548,8 @@ void mostrarClientePorNrCliente(char nombreArchivo[],int nrCliente)
     }
 }
 
-void mostrarClientesActivos(char nombreArchivo[]){
+void mostrarClientesActivos(char nombreArchivo[])
+{
     FILE *archi=fopen(nombreArchivo,"rb");
     stCliente c;
 
@@ -369,8 +557,9 @@ void mostrarClientesActivos(char nombreArchivo[]){
     {
         while(fread(&c,sizeof(stCliente),1,archi)>0)
         {
-            if(c.eliminado==0){
-            muestraUnCliente(c);
+            if(c.eliminado==0)
+            {
+                muestraUnCliente(c);
             }
         }
         fclose(archi);
@@ -380,7 +569,8 @@ void mostrarClientesActivos(char nombreArchivo[]){
 }
 
 
-void mostrarClientesInactivos(char nombreArchivo[]){
+void mostrarClientesInactivos(char nombreArchivo[])
+{
     FILE *archi=fopen(nombreArchivo,"rb");
     stCliente c;
 
@@ -388,8 +578,9 @@ void mostrarClientesInactivos(char nombreArchivo[]){
     {
         while(fread(&c,sizeof(stCliente),1,archi)>0)
         {
-            if(c.eliminado==1){
-            muestraUnCliente(c);
+            if(c.eliminado==1)
+            {
+                muestraUnCliente(c);
             }
         }
         fclose(archi);
@@ -399,8 +590,9 @@ void mostrarClientesInactivos(char nombreArchivo[]){
 }
 
 
-void modificarNombreCliente(char nombreArchivo[], int nrCliente){
-FILE *archi=fopen(nombreArchivo, "r+b");
+void modificarNombreCliente(char nombreArchivo[], int nrCliente)
+{
+    FILE *archi=fopen(nombreArchivo, "r+b");
     stCliente e;
     int existe=0;
 
@@ -435,8 +627,9 @@ FILE *archi=fopen(nombreArchivo, "r+b");
     }
 }
 
-void modificarDNICliente(char nombreArchivo[], int nrCliente){
-FILE *archi=fopen(nombreArchivo, "r+b");
+void modificarDNICliente(char nombreArchivo[], int nrCliente)
+{
+    FILE *archi=fopen(nombreArchivo, "r+b");
     stCliente e;
     int existe=0;
 
@@ -468,8 +661,9 @@ FILE *archi=fopen(nombreArchivo, "r+b");
     }
 }
 
-void modificarEmailCliente(char nombreArchivo[], int nrCliente){
-FILE *archi=fopen(nombreArchivo, "r+b");
+void modificarEmailCliente(char nombreArchivo[], int nrCliente)
+{
+    FILE *archi=fopen(nombreArchivo, "r+b");
     stCliente e;
     int existe=0;
 
@@ -501,8 +695,9 @@ FILE *archi=fopen(nombreArchivo, "r+b");
     }
 }
 
-void modificarTelefonoCliente(char nombreArchivo[], int nrCliente){
-FILE *archi=fopen(nombreArchivo, "r+b");
+void modificarTelefonoCliente(char nombreArchivo[], int nrCliente)
+{
+    FILE *archi=fopen(nombreArchivo, "r+b");
     stCliente e;
     int existe=0;
 
@@ -534,8 +729,9 @@ FILE *archi=fopen(nombreArchivo, "r+b");
     }
 }
 
-void modificarDomicilioCliente(char nombreArchivo[], int nrCliente){
-FILE *archi=fopen(nombreArchivo, "r+b");
+void modificarDomicilioCliente(char nombreArchivo[], int nrCliente)
+{
+    FILE *archi=fopen(nombreArchivo, "r+b");
     stCliente e;
     int existe=0;
 
