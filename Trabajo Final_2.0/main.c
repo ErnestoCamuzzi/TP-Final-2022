@@ -7,8 +7,7 @@
 #include <string.h>
 #include "gotoxy.h"
 
-/// Prueba
-/// Prueba
+
 
 #define DIM 100
 #define DIM_CONSUMOS 10
@@ -40,6 +39,11 @@ void cargaArchivoConsumosRandom(char nombreArchivo[]);
 void muestraArchivoConsumo(char nombreArchivo[]);
 int buscaIdClienteEnArchivo(int idCliente);
 void cargarArchivoConsumoManual(char nombreArchivo[]);
+int MenuConsumo();
+int MenuCliente();
+int MenuModificarCliente();
+void modificarEstadoConsumo(char nombreArchivo[], int idConsumo);
+void mostrarConsumoPorIdConsumo(char nombreArchivo[],int idConsumo);
 
 int main()
 {
@@ -49,13 +53,16 @@ int main()
 
     stCliente clientes[DIM];
     stConsumos consumos[DIM_CONSUMOS];
-    system("pause");
 
     int validos=0;
     int nrCliente;
     int vConsumo =0;
+    int idConsumo=0;
 
     char opcion;
+    int opcionCliente;
+    int opcionConsumo;
+    int opcionModificaCliente;
     do
     {
         system("cls");
@@ -65,72 +72,115 @@ int main()
 
         switch(opcion)
         {
-        case 48:
-            cargaArchivoClientes(ARCHI_CLIENTES);
-            break;
+        case 48: ///TECLA 0
+            opcionCliente=MenuCliente();
+            switch (opcionCliente)
+            {
+            case 48: ///TECLA 0
+                cargaArchivoClientes(ARCHI_CLIENTES);
+                system("pause");
+                break;
+            case 49: ///TECLA 1
+                muestraArchivoClientes(ARCHI_CLIENTES);
+                system("pause");
+                break;
+            case 50: ///TECLA 2
+                printf("INGRE NR CLIENTE: ");
+                scanf("%d", &nrCliente);
+                modificarEstadoCliente(ARCHI_CLIENTES, nrCliente);
+                break;
 
+            case 51: ///TECLA 3
+                printf("INGRE NR CLIENTE: ");
+                scanf("%d", &nrCliente);
+                mostrarClientePorNrCliente(ARCHI_CLIENTES, nrCliente);
+                break;
+
+            case 52: ///TECLA 4
+                mostrarClientesActivos(ARCHI_CLIENTES);
+                break;
+
+            case 53: ///TECLA 5
+                mostrarClientesInactivos(ARCHI_CLIENTES);
+                break;
+
+            case 54: ///TECLA 6
+                opcionModificaCliente=MenuModificarCliente();
+                switch(opcionModificaCliente)
+                {
+
+                case 48:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarNombreCliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                case 49:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarTelefonoCliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                case 50:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarDNICliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                case 51:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarEmailCliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                case 52:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarDomicilioCliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                case 53:
+                    printf("INGRESE UN NUMERO DE CLIENTE: ");
+                    scanf("%d", &nrCliente);
+                    modificarEstadoCliente(ARCHI_CLIENTES, nrCliente);
+                    break;
+                }
+
+                break;
+            }
+            break;
         case 49:
-            muestraArchivoClientes(ARCHI_CLIENTES);
-            system("pause");
+            opcionConsumo=MenuConsumo();
+            switch (opcionConsumo)
+            {
+            case 48: ///TECLA 0
+                cargaArchivoConsumosRandom(ARCHI_CONSUMOS);
+                system("pause");
+                break;
+
+            case 49: ///TECLA 1
+                ///cargaUnConsumoManual();
+                cargarArchivoConsumoManual(ARCHI_CONSUMOS);
+                system("pause");
+                break;
+
+            case 50: ///TECLA 2
+                muestraArchivoConsumo(ARCHI_CONSUMOS);
+                system("pause");
+                break;
+
+            case 51: ///tecla 3
+                printf("\n\nINGRESE ID CONSUMO A MODIFICAR: ");
+                scanf("%d", &idConsumo);
+                modificarEstadoConsumo(ARCHI_CONSUMOS, idConsumo);
+                break;
+            }
+        case 52: ///tecla 4
+            printf("\n\nINGRESE ID CONSUMO A MODIFICAR: ");
+            scanf("%d", &idConsumo);
+            mostrarConsumoPorIdConsumo(ARCHI_CONSUMOS, idConsumo);
             break;
-
-        case 50:
-            printf("INGRE NR CLIENTE: ");
-            scanf("%d", &nrCliente);
-            modificarEstadoCliente(ARCHI_CLIENTES, nrCliente);
-            break;
-
-        case 51:
-            printf("INGRE NR CLIENTE: ");
-            scanf("%d", &nrCliente);
-            mostrarClientePorNrCliente(ARCHI_CLIENTES, nrCliente);
-            break;
-
-        case 52:
-
-            mostrarClientesActivos(ARCHI_CLIENTES);
-            break;
-
-        case 53:
-            mostrarClientesInactivos(ARCHI_CLIENTES);
-            break;
-
-        case 54: ///TECLA 6
-            printf("INGRE NR CLIENTE: ");
-            scanf("%d", &nrCliente);
-            modificarNombreCliente(ARCHI_CLIENTES, nrCliente);
-            modificarTelefonoCliente(ARCHI_CLIENTES, nrCliente);
-            modificarDNICliente(ARCHI_CLIENTES, nrCliente);
-            modificarEmailCliente(ARCHI_CLIENTES, nrCliente);
-            modificarDomicilioCliente(ARCHI_CLIENTES, nrCliente);
-            break;
-
-        case 55: ///TECLA 7
-            cargaArchivoConsumosRandom(ARCHI_CONSUMOS);
-            system("pause");
-
-            break;
-
-        case 56: ///TECLA 8
-            ///cargaUnConsumoManual();
-            cargarArchivoConsumoManual(ARCHI_CONSUMOS);
-            system("pause");
-            break;
-
-        case 57: ///TECLA 9
-            muestraArchivoConsumo(ARCHI_CONSUMOS);
-
-            system("pause");
-            break;
-
         }
-
     }
+
     while (opcion!=27);
     return 0;
 }
-
-
 
 void cargaArchivoClientes(char nombreArchivo[])
 {
@@ -274,10 +324,10 @@ int ultimoIdCliente(char nombreArchivo[])
     if(arch)
     {
         fseek(arch, -1*sizeof(stCliente), SEEK_END);
-        if(fread(&c, sizeof(stCliente), 1, arch)>0)
-        {
+        fread(&c, sizeof(stCliente), 1, arch);
+
             id = c.id;
-        }
+
         fclose(arch);
     }
 
@@ -395,29 +445,6 @@ void getNombre(char n[])
 {
     char nombres[][20]= {"Pedro", "Pablo", "Ana"};
     strcpy(n, nombres[rand()%(sizeof(nombres)/20)]);
-}
-
-void muestraMenu()
-{
-    printf("\n");
-    color(10);
-    replicaChar('=',100);
-    printf("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU CLIENTES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
-    color(3);
-    printf("\n 0 - Carga de un cliente.");
-    printf("\n 1 - Mostrar registro de clientes.");
-    printf("\n 2 - Modificar STATUS.");
-    printf("\n 3 - Buscar un cliente");
-    printf("\n 4 - Muestra clientes ACTIVOS.");
-    printf("\n 5 - Muestra clientes INACTIVOS.");
-    printf("\n 6 - MODIFICAR NOMBRE Y APELLIDO");
-    printf("\n 7 - CARGA 100 CONSUMOS");
-    printf("\n 8 -  ");
-    printf("\n 9 - MUESTRA ARCHIVO CONSUMOS\n ");
-    color(10);
-    replicaChar('=',100);
-
-
 }
 
 void replicaChar(char c, int cant)
@@ -762,4 +789,176 @@ void modificarDomicilioCliente(char nombreArchivo[], int nrCliente)
         system("pause");
         fclose(archi);
     }
+}
+
+
+
+void modificarEstadoConsumo(char nombreArchivo[], int idConsumo)
+{
+
+    FILE *archi=fopen(nombreArchivo, "r+b");
+    stConsumos c;
+    int existe=0;
+
+    if(archi)
+    {
+        fread(&c, sizeof(stConsumos), 1, archi);
+        while(!feof(archi))
+        {
+            if (idConsumo==c.id)
+            {
+
+                if(c.baja==1)
+                {
+                    c.baja=0;
+                }
+                else if(c.baja==0)
+                {
+                    c.baja=1;
+                }
+                int pos=ftell(archi)-sizeof(stConsumos); /// pasar a dividir
+                fseek(archi,pos,SEEK_SET);
+                fwrite(&c, sizeof(stConsumos), 1, archi);
+                printf("SE MODIFICO EL STATUS DEL CONSUMO.\n\n");
+                system("pause");
+
+                existe=1;
+                break;
+
+            }
+            fread(&c, sizeof(stConsumos), 1, archi);
+
+        }
+        if (existe==0)
+            printf("NO EXISTE ESE ID DE CONUSMO.\n");
+        system("pause");
+        fclose(archi);
+    }
+}
+
+
+void mostrarConsumoPorIdConsumo(char nombreArchivo[],int idConsumo)
+{
+
+    FILE *archi=fopen(nombreArchivo, "rb");
+    stConsumos c;
+    int existe=0;
+    int flag=0;
+
+    if(archi)
+    {
+        fread(&c, sizeof(stConsumos), 1, archi);
+        while(!feof(archi) && flag==0)
+        {
+            if (idConsumo==c.id)
+            {
+                int pos=ftell(archi)-sizeof(stConsumos);
+                fseek(archi,pos,SEEK_SET);
+                muestraUnConsumo(c);
+                existe=1;
+                flag=1;
+            }
+            fread(&c, sizeof(stConsumos), 1, archi);
+        }
+        if (existe==0)
+            printf("NO EXISTE ESE ID DE CONSUMO.\n");
+        system("pause");
+        fclose(archi);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///FUNCIONES MENU
+
+void muestraMenu()
+{
+    system ("cls");
+    printf("\n");
+    system("color 1F");
+    ///color(10);
+    replicaChar('=',80);
+    printf("\n");
+    printf("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< MENU GENERAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
+    ///color(3);
+    printf("\n 0 - MENU CLIENTES.");
+    printf("\n 1 - MENU CONSUMOS.\n");
+    printf("\n");
+    ///color(10);
+    replicaChar('=',80);
+
+}
+
+
+int MenuCliente ()
+{
+    int opcionCliente;
+    system("cls");
+    system("color 1F");
+    printf("\n");
+    replicaChar('=',80);
+    printf("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU CLIENTES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
+    printf("\n 0 - Carga de un cliente.");
+    printf("\n 1 - Mostrar registro de clientes.");
+    printf("\n 2 - Modificar STATUS.");
+    printf("\n 3 - Buscar un cliente");
+    printf("\n 4 - Muestra clientes ACTIVOS.");
+    printf("\n 5 - Muestra clientes INACTIVOS.");
+    printf("\n 6 - MODIFICAR DATO DE CLIENTES");
+    printf("\n   - Ingrese opcion\n");
+    replicaChar('=',80);
+    printf("\n");
+    opcionCliente=getch();
+    return opcionCliente;
+}
+
+int MenuModificarCliente ()
+{
+    int opcionModificaCliente;
+    system("cls");
+    system("color 1F");
+    printf("\n");
+    replicaChar('=',80);
+    printf("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MODIFICAR CLIENTES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
+    printf("\n 0 - MODIFICAR NOMBRE Y APELLIDO.");
+    printf("\n 1 - MODIFICAR NR TELEFONO.");
+    printf("\n 2 - MODIFICAR NR DNI.");
+    printf("\n 3 - MODIFICAR EMAIL.");
+    printf("\n 4 - MODIFICAR DOMICILIO.");
+    printf("\n 5 - MODIFICAR STATUS.");
+    printf("\n   - Ingrese opcion\n");
+    replicaChar('=',80);
+    printf("\n");
+    opcionModificaCliente=getch();
+    return opcionModificaCliente;
+}
+
+int MenuConsumo()
+{
+    int opcionConsumo;
+    system("cls");
+    system("color 1F");
+    printf("\n");
+    replicaChar('=',80);
+    printf("\n <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU CONSUMO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \n");
+    printf("\n 0 - Carga Archivo Consumo Random");
+    printf("\n 1 - Carga Archivo Consumo Manual");
+    printf("\n 2 - Muestra Archivo de Consumo");
+    printf("\n 3 - Modificar Estado De Consumo");
+    printf("\n 4 - BUSCAR CONSUMO POR ID");
+    printf("\n     Ingrese opcion\n");
+    replicaChar('=',80);
+    opcionConsumo=getch();
+    return opcionConsumo;
 }
