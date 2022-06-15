@@ -7,7 +7,8 @@
 #include <string.h>
 #include "gotoxy.h"
 
-
+/// Prueba
+/// Prueba
 
 #define DIM 100
 #define DIM_CONSUMOS 10
