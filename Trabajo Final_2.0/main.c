@@ -44,6 +44,8 @@ int MenuCliente();
 int MenuModificarCliente();
 void modificarEstadoConsumo(char nombreArchivo[], int idConsumo);
 void mostrarConsumoPorIdConsumo(char nombreArchivo[],int idConsumo);
+void modificarConsumo(char nombreArchivo[], int idConsumo, int nuevoConsumo);
+void modificarFechaConsumo(char nombreArchivo[], int idConsumo, int dia, int mes, int anio);
 
 int main()
 {
@@ -58,6 +60,10 @@ int main()
     int nrCliente;
     int vConsumo =0;
     int idConsumo=0;
+    int nuevoConsumo=0;
+    int nuevoDia=0;
+    int nuevoMes=0;
+    int nuevoAnio=0;
 
     char opcion;
     int opcionCliente;
@@ -135,12 +141,12 @@ int main()
                     modificarDomicilioCliente(ARCHI_CLIENTES, nrCliente);
                     break;
                 case 53:
+                    ///system("cls");
                     printf("INGRESE UN NUMERO DE CLIENTE: ");
                     scanf("%d", &nrCliente);
                     modificarEstadoCliente(ARCHI_CLIENTES, nrCliente);
                     break;
                 }
-
                 break;
             }
             break;
@@ -154,7 +160,6 @@ int main()
                 break;
 
             case 49: ///TECLA 1
-                ///cargaUnConsumoManual();
                 cargarArchivoConsumoManual(ARCHI_CONSUMOS);
                 system("pause");
                 break;
@@ -169,17 +174,43 @@ int main()
                 scanf("%d", &idConsumo);
                 modificarEstadoConsumo(ARCHI_CONSUMOS, idConsumo);
                 break;
-            }
-        case 52: ///tecla 4
-            printf("\n\nINGRESE ID CONSUMO A MODIFICAR: ");
+
+            case 52: ///tecla 4
+                printf("\n\nINGRESE ID CONSUMO A MOSTRAR: ");
+                scanf("%d", &idConsumo);
+                mostrarConsumoPorIdConsumo(ARCHI_CONSUMOS, idConsumo);
+                break;
+
+            case 53:
+                ///system("cls");
+                printf("\nINGRESE ID DE CONSUMO A MODIFICAR ");
+                scanf("%d", &idConsumo);
+                printf("\nINGRESE NUEVO CONSUMO: ");
+                scanf("%d", &nuevoConsumo);
+                modificarConsumo(ARCHI_CONSUMOS,idConsumo,nuevoConsumo);
+                break;
+
+        case 54:
+            ///system("cls");
+            printf("\nINGRESE ID DE CONSUMO A MODIFICAR ");
             scanf("%d", &idConsumo);
-            mostrarConsumoPorIdConsumo(ARCHI_CONSUMOS, idConsumo);
+            printf("\nINGRESE DIA: ");
+            scanf("%d", &nuevoDia);
+            printf("\nINGRESE MES: ");
+            scanf("%d", &nuevoMes);
+            printf("\nINGRESE ANIO: ");
+            scanf("%d", &nuevoAnio);
+            modificarFechaConsumo(ARCHI_CONSUMOS,idConsumo,nuevoDia,nuevoMes,nuevoAnio);
             break;
         }
-    }
 
-    while (opcion!=27);
-    return 0;
+    }
+}
+
+
+
+while (opcion!=27);
+return 0;
 }
 
 void cargaArchivoClientes(char nombreArchivo[])
@@ -326,7 +357,7 @@ int ultimoIdCliente(char nombreArchivo[])
         fseek(arch, -1*sizeof(stCliente), SEEK_END);
         fread(&c, sizeof(stCliente), 1, arch);
 
-            id = c.id;
+        id = c.id;
 
         fclose(arch);
     }
@@ -820,7 +851,48 @@ void modificarEstadoConsumo(char nombreArchivo[], int idConsumo)
                 fseek(archi,pos,SEEK_SET);
                 fwrite(&c, sizeof(stConsumos), 1, archi);
                 printf("SE MODIFICO EL STATUS DEL CONSUMO.\n\n");
-                system("pause");
+
+                existe=1;
+                break;
+
+            }
+            fread(&c, sizeof(stConsumos), 1, archi);
+
+        }
+        if (existe==0)
+            printf("NO EXISTE ESE ID DE CONUSMO.\n");
+        system("pause");
+        fclose(archi);
+    }
+}
+
+void modificarDatosConsumos(char nombreArchivo[], int idConsumo)
+{
+
+    FILE *archi=fopen(nombreArchivo, "r+b");
+    stConsumos c;
+    int existe=0;
+
+    if(archi)
+    {
+        fread(&c, sizeof(stConsumos), 1, archi);
+        while(!feof(archi))
+        {
+            if (idConsumo==c.id)
+            {
+
+                if(c.baja==1)
+                {
+                    c.baja=0;
+                }
+                else if(c.baja==0)
+                {
+                    c.baja=1;
+                }
+                int pos=ftell(archi)-sizeof(stConsumos); /// pasar a dividir
+                fseek(archi,pos,SEEK_SET);
+                fwrite(&c, sizeof(stConsumos), 1, archi);
+                printf("SE MODIFICO EL STATUS DEL CONSUMO.\n\n");
 
                 existe=1;
                 break;
@@ -868,8 +940,79 @@ void mostrarConsumoPorIdConsumo(char nombreArchivo[],int idConsumo)
 }
 
 
+void modificarConsumo(char nombreArchivo[], int idConsumo, int nuevoConsumo)
+{
+
+    FILE *archi=fopen(nombreArchivo, "r+b");
+    stConsumos c;
+    int existe=0;
+
+    if(archi)
+    {
+        fread(&c, sizeof(stConsumos), 1, archi);
+        while(!feof(archi))
+        {
+            if (idConsumo==c.id)
+            {
+
+                c.datosConsumidos=nuevoConsumo;
+                int pos=ftell(archi)-sizeof(stConsumos);
+                fseek(archi,pos,SEEK_SET);
+                fwrite(&c, sizeof(stConsumos), 1, archi);
+                printf("SE MODIFICO LA CANTIDAD CONSUMIDA.\n\n");
+
+                existe=1;
+                break;
+
+            }
+            fread(&c, sizeof(stConsumos), 1, archi);
+
+        }
+        if (existe==0)
+            printf("NO EXISTE ESE ID DE CONUSMO.\n");
+        system("pause");
+        fclose(archi);
+    }
+}
 
 
+
+void modificarFechaConsumo(char nombreArchivo[], int idConsumo, int dia, int mes, int anio)
+{
+
+    FILE *archi=fopen(nombreArchivo, "r+b");
+    stConsumos c;
+    int existe=0;
+
+    if(archi)
+    {
+        do
+        {
+            printf("\nINGRESE MES: ");
+            scanf("%d", &c.mes);
+
+        }
+        while(validaMes(c.mes)==0);
+
+        do
+        {
+            printf("\nINGRESE DIA: ");
+            scanf("%d", &c.dia);
+        }
+        while(validaDia(c.mes, c.dia)==0);
+
+        do
+        {
+            printf("\nINGRESE ANIO: ");
+            scanf("%d", &c.anio);
+        }while(validaAnio(c.anio)==0);
+
+        int pos=ftell(archi)-sizeof(stConsumos);
+        fseek(archi,pos,SEEK_SET);
+        fwrite(&c, sizeof(stConsumos), 1, archi);
+        fclose(archi);
+    }
+}
 
 
 
@@ -957,6 +1100,8 @@ int MenuConsumo()
     printf("\n 2 - Muestra Archivo de Consumo");
     printf("\n 3 - Modificar Estado De Consumo");
     printf("\n 4 - BUSCAR CONSUMO POR ID");
+    printf("\n 5 - MODIFICAR CONSUMO POR ID");
+    printf("\n 6 - MODIFICAR FECHA POR ID");
     printf("\n     Ingrese opcion\n");
     replicaChar('=',80);
     opcionConsumo=getch();
