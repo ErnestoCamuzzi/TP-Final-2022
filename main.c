@@ -130,7 +130,7 @@ int main()
     return 0;
 }
 
-
+///carga el archivo de clientes
 
 void cargaArchivoClientes(char nombreArchivo[])
 {
