@@ -1,0 +1,502 @@
+# depslib dependency file v1.0
+1653776650 source:d:\utn 2022\lab 1\trabajo final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1653866538 source:c:\users\vicky\desktop\programaci”n\tp final\tp-final-2022-main\trabajo final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654125347 source:c:\users\dario\desktop\tp\trabajo final\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654125255 c:\users\dario\desktop\tp\trabajo final\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654125257 source:c:\users\dario\desktop\tp\trabajo final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+
+1654125257 c:\users\dario\desktop\tp\trabajo final\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654139100 source:c:\users\dario\desktop\tp\trabajo final_2.0\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654136711 c:\users\dario\desktop\tp\trabajo final_2.0\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654125466 source:c:\users\dario\desktop\tp\trabajo final_2.0\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654136713 c:\users\dario\desktop\tp\trabajo final_2.0\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654139091 source:c:\users\dario\desktop\tp\trabajo final_2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+
+1654136219 c:\users\dario\desktop\tp\trabajo final_2.0\archivo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654222324 source:c:\users\vicky\desktop\trabajo final_2.0\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654222259 c:\users\vicky\desktop\trabajo final_2.0\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654139556 source:c:\users\vicky\desktop\trabajo final_2.0\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654139556 c:\users\vicky\desktop\trabajo final_2.0\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654222780 source:c:\users\vicky\desktop\trabajo final_2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1491400450 source:c:\users\vicky\desktop\trabajo final_2.0\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1491399896 c:\users\vicky\desktop\trabajo final_2.0\gotoxy.h
+
+1654643839 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654222866 c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654909330 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1654727479 c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1654222866 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655500309 source:c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1654222866 c:\users\dario\desktop\tp-final-2022-main\trabajo final_2.0\gotoxy.h
+
+1655566717 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655505838 c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655567449 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655567449 c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655505838 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655567504 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	"archivos.h"
+	"menu.h"
+	<string.h>
+	"gotoxy.h"
+
+1655505837 c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\gotoxy.h
+
+1655567504 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567289 source:c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567339 c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\archivos.h
+
+1655567526 c:\users\mauri\desktop\tecnicatura\lab y prog i\01- trabajo practico final\trabajo final_2.0-20220617t224203z-001\trabajo final_2.0\menu.h
+
+1655586451 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567929 c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655583315 c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655567929 c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\gotoxy.h
+
+1655567929 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655584681 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655567929 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655586789 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	"archivos.h"
+	"menu.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567929 c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\archivos.h
+
+1655567929 c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\menu.h
+
+1655579704 source:c:\users\victoria.cabo\desktop\trabajo final_2.0_mau\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+
+1655683821 source:c:\users\dario\desktop\trabajo final_2.0_vicky\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655567929 c:\users\dario\desktop\trabajo final_2.0_vicky\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655685011 source:c:\users\dario\desktop\trabajo final_2.0_vicky\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655583315 c:\users\dario\desktop\trabajo final_2.0_vicky\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655567929 source:c:\users\dario\desktop\trabajo final_2.0_vicky\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655686842 source:c:\users\dario\desktop\trabajo final_2.0_vicky\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	"archivos.h"
+	"menu.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567929 c:\users\dario\desktop\trabajo final_2.0_vicky\archivos.h
+
+1655567929 c:\users\dario\desktop\trabajo final_2.0_vicky\menu.h
+
+1655567929 c:\users\dario\desktop\trabajo final_2.0_vicky\gotoxy.h
+
+1655686903 source:c:\users\dario\desktop\trabajo final_2.0_vicky\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<windows.h>
+
+1655687143 source:c:\users\dario\desktop\trabajo final_2.0_vicky\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<time.h>
+
+1655699446 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<time.h>
+
+1655700093 c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655583315 c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655695450 c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\gotoxy.h
+
+1655700093 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655696963 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655695113 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655697252 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	"archivos.h"
+	"menu.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567929 c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\archivos.h
+
+1655695450 c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\menu.h
+
+1655698876 source:c:\users\victoria.cabo\desktop\tp_final\trabajo final_2.0_vicky\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<windows.h>
+
+1655702172 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<time.h>
+
+1655700093 c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\cliente.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655701216 c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\consumo.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+
+1655695450 c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\gotoxy.h
+
+1655701236 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\consumo.c
+	"consumo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1655695113 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1655703437 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	"archivos.h"
+	"menu.h"
+	<string.h>
+	"gotoxy.h"
+
+1655567929 c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\archivos.h
+
+1655695450 c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\menu.h
+
+1655703873 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\menu.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<time.h>
+	"cliente.h"
+	"consumo.h"
+	<string.h>
+	"gotoxy.h"
+	<windows.h>
+
+1655703694 source:c:\users\victoria.cabo\desktop\versionfinal\tp_final\trabajo final_2.0_vicky\cliente.c
+	"cliente.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
